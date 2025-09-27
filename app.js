@@ -11,7 +11,7 @@ require("dotenv").config();
 //route
 const authRoute = require("./routes/authRoutes");
 // const postRoute = require("./routes/postRoutes");
-// const indexRoutes = require("./routes/indexRoutes");
+const indexRoutes = require("./routes/indexRoutes");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -27,11 +27,12 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.use("/",(req,res)=>{
-    res.end("hello");
-})
+// app.use("/",(req,res)=>{
+//     res.end("hello");
+// })
 
 app.use("/auth",authRoute);
+app.use("/",indexRoutes)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
