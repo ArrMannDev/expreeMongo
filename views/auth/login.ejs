@@ -1,0 +1,10 @@
+<form action="/auth/login" method="POST" class="w-50 m-auto p-5 mt-5 shadow">
+    <h3>Login</h3>
+    <% if (typeof error === 'object' ) { %>
+        <%= error %>
+    <% } %>
+    <input type="email" name="email" placeholder="Email" required class="form-control mb-3" />
+    <input type="password" name="password" placeholder="Password" required class="form-control mb-3" />
+    <button type="submit" class="btn btn-primary">Login</button>
+    <a href="/auth/register" class="btn btn-info">To Register</a>
+  </form>

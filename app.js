@@ -5,12 +5,12 @@ const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
 require("dotenv").config();
 
-//middleware
-// const authMiddleware = require("./middleware/authMiddleware");
+// middleware
+const authMiddleware = require("./middleware/authMiddleware");
 
 //route
 const authRoute = require("./routes/authRoutes");
-// const postRoute = require("./routes/postRoutes");
+const postRoute = require("./routes/postsRoutes");
 const indexRoutes = require("./routes/indexRoutes");
 
 app.set("view engine", "ejs");
@@ -33,6 +33,7 @@ app.use((req,res,next)=>{
 
 app.use("/auth",authRoute);
 app.use("/",indexRoutes)
+app.use("/posts",authMiddleware,postRoute);  
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

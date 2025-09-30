@@ -1,0 +1,29 @@
+<% if (posts.length === 0) { %>
+    <p>No posts found.</p>
+    <a href="/posts/create">Create a new post</a>
+    <% } else { %>
+    <h3 class="text-center text-danger my-4">My Posts List</h3>
+    <div class="w-75 m-auto p-4 mt-4">
+      <% posts.forEach(post => { %>
+      <div class="shadow m-3 p-4">
+        <h4><%= post.title %></h4>
+        <p><%= post.content %></p>
+    
+        <a href="/posts/edit/<%= post.id %>" class="btn btn-primary">Edit</a>
+        <form
+          action="/posts/delete/<%= post.id %>"
+          method="POST"
+          style="display: inline"
+        >
+          <button
+            type="submit"
+            onclick="return confirm('are you sure?')"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>

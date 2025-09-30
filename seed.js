@@ -37,7 +37,7 @@ async function seedPost(count) {
   }
 
   try {
-    await prisma.posts.createMany({ data: posts });
+    await prisma.post.createMany({ data: posts });
     console.log(`${count} posts created`);
   } catch (error) {
     console.log("Error seeding posts", error);
